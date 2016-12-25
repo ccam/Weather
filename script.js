@@ -1,8 +1,8 @@
 function getData(){
   var xhr = new XMLHttpRequest();
   xhr.responseType = 'text';
-  //replace github with "https://api.wunderground.com/api/7c06c11b1ec1f632/forecast/geolookup/conditions/q/NY/New_York.json"
-  xhr.open('GET', 'https://raw.githubusercontent.com/ccam/weather/master/test.json');
+  //replace github with 
+  xhr.open('GET', "https://api.wunderground.com/api/7c06c11b1ec1f632/forecast/geolookup/conditions/q/NY/New_York.json" );
 
   xhr.onload = function() {
     var data = JSON.parse(xhr.responseText);
@@ -30,7 +30,7 @@ function renderHTML(theData) {
   humidity.innerHTML = theData.current_observation.relative_humidity;
 
   var rain = document.getElementById('rain');
-  rain.innerHTML = theData.current_observation.precip_1hr_in;
+  rain.innerHTML = Math.round(theData.current_observation.precip_1hr_in);
 
   var snow = document.getElementById('snow');
   snow.innerHTML = theData.forecast.simpleforecast.forecastday[0].snow_allday.in;
